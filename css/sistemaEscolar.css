@@ -7,18 +7,57 @@ h1{
     text-align: center;
 }
 
-#sala1{
+#salas{
+    justify-content: space-around;
+    margin-top: 6rem;
+    text-align: center;
+}
+
+#abrir-sala1,
+#abrir-sala2,
+#abrir-sala3,
+#abrir-sala4
+{
+    width: 40vh;
+    height: 5vh;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    margin: 0 2rem;
+}
+
+#sala1,
+#sala2,
+#sala3,
+#sala4{
+    width: 90%;
+    margin: 2rem auto;
+    border-radius: 12px;
     background-color: rgb(129, 115, 115);
     padding: 0.5rem;
 }
 
-#sala1 h2{
+#sala1 h2,
+#sala2 h2,
+#sala3 h2,
+#sala4 h2{
     text-align: center;
 }
 
 .aluno{
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: black;
     padding: 0.5rem;
     display: flex;
     justify-content: space-around;
     border-bottom: 4px solid white;
+}
+
+.hide{
+    display: none;
 }
