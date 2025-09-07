@@ -7,6 +7,13 @@ h1{
     text-align: center;
 }
 
+#escola1{
+    background-color: rgb(59, 59, 59);
+    height: 22vh;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
 #salas{
     justify-content: space-around;
     margin-top: 6rem;
@@ -47,6 +54,18 @@ h1{
     text-align: center;
 }
 
+#calcular-media{
+    margin: 2rem 80vh;
+    padding: 0.8rem;
+    width: 19rem;
+    background-color: rgb(39, 38, 38);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
 .aluno{
     font-size: 1.1rem;
     font-weight: bold;
