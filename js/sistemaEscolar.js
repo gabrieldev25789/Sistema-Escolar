@@ -12,6 +12,10 @@ const sala3 = document.querySelector("#sala3")
 const buttonSala4 = document.querySelector("#abrir-sala4")
 const sala4 = document.querySelector("#sala4")
 
+const calcularMediaBtn = document.querySelector("#calcular-media")
+const mediaText = document.querySelector("#media-text")
+
+
 function abrirSalas(abrir, fechar1, fechar2, fechar3, btn, btn1, btn2, btn3){
 
        const isHidden = abrir.classList.contains("hide");
@@ -58,8 +62,9 @@ buttonSala4.addEventListener("click", () =>{
 })
 
 
+const medias = []
+
 function mediaAlunos(sala){
-    const medias = []
 
    const salaAluno = sala.querySelectorAll(".aluno")
 
@@ -71,7 +76,7 @@ function mediaAlunos(sala){
         medias.push(numero)
     })
         return medias
-    }
+}
 
 function calcularMedia(sala){
     const medias = mediaAlunos(sala)
@@ -98,4 +103,17 @@ mostrarMedia(sala2, 2)
 mostrarMedia(sala3, 3)
 mostrarMedia(sala4, 4)
 
+function calcularMediaGeral(){
+    let start = 0 
 
+    medias.forEach((media)=>{
+        start += media 
+    })
+       const result = start / medias.length
+       return result.toFixed(2)
+}
+
+calcularMediaBtn.addEventListener("click", () =>{
+    const media = calcularMediaGeral()
+    mediaText.textContent = `Média da escola 1: ${media}`
+})
