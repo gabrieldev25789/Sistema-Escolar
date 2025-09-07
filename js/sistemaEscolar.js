@@ -39,7 +39,7 @@ function abrirSalas(abrir, fechar1, fechar2, fechar3, btn, btn1, btn2, btn3){
         btn2.classList.remove("hide")
         btn3.classList.remove("hide")
         }
-};
+}
 
 buttonSala1.addEventListener("click", () =>{
     abrirSalas(sala1, sala2, sala3, sala4, buttonSala1, buttonSala2, buttonSala3, buttonSala4)
