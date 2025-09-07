@@ -1,3 +1,5 @@
+const buttons = document.querySelectorAll(".button")
+
 const buttonSala1 = document.querySelector("#abrir-sala1")
 const sala1 = document.querySelector("#sala1")
 
@@ -10,70 +12,51 @@ const sala3 = document.querySelector("#sala3")
 const buttonSala4 = document.querySelector("#abrir-sala4")
 const sala4 = document.querySelector("#sala4")
 
-function abrirSalas(){
+function abrirSalas(abrir, fechar1, fechar2, fechar3, btn, btn1, btn2, btn3){
+
+       const isHidden = abrir.classList.contains("hide");
+
+        fechar1.classList.add("hide")
+        fechar2.classList.add("hide")
+        fechar3.classList.add("hide")
+
+        buttonSala1.textContent = "ABRIR SALA 1"
+        buttonSala2.textContent = "ABRIR SALA 2"
+        buttonSala3.textContent = "ABRIR SALA 3"
+        buttonSala4.textContent = "ABRIR SALA 4"
+
+        if (isHidden) {
+        // Abre a sala selecionada
+        abrir.classList.remove("hide")
+        btn.textContent = "FECHAR SALA"
+        btn1.classList.add("hide")
+        btn2.classList.add("hide")
+        btn3.classList.add("hide")
+        } else {
+        // Fecha a sala se ela já estiver aberta
+        abrir.classList.add("hide")
+        btn1.classList.remove("hide")
+        btn2.classList.remove("hide")
+        btn3.classList.remove("hide")
+        }
+}
 
 buttonSala1.addEventListener("click", () =>{
-    if(sala1.classList.contains("hide")){
-    buttonSala2.classList.add("hide")
-    buttonSala3.classList.add("hide")
-    buttonSala4.classList.add("hide")
-    buttonSala1.textContent = "FECHAR SALA 1"
-    } else{
-    buttonSala2.classList.remove("hide")
-    buttonSala3.classList.remove("hide")
-    buttonSala4.classList.remove("hide")
-    buttonSala1.textContent = "ABRIR SALA 1"
-    }
-    sala1.classList.toggle("hide")
+    abrirSalas(sala1, sala2, sala3, sala4, buttonSala1, buttonSala2, buttonSala3, buttonSala4)
 })
 
 buttonSala2.addEventListener("click", () =>{
-    if(sala2.classList.contains("hide")){
-    buttonSala1.classList.add("hide")
-    buttonSala3.classList.add("hide")
-    buttonSala4.classList.add("hide")
-    buttonSala2.textContent = "FECHAR SALA 2"
-    } else{
-    buttonSala1.classList.remove("hide")
-    buttonSala3.classList.remove("hide")
-    buttonSala4.classList.remove("hide")
-    buttonSala2.textContent = "ABRIR SALA 2"
-    }
-    sala2.classList.toggle("hide")
+    abrirSalas(sala2, sala1, sala3, sala4, buttonSala2, buttonSala1, buttonSala3, buttonSala4)
 })
 
 buttonSala3.addEventListener("click", () =>{
-    if(sala3.classList.contains("hide")){
-    buttonSala1.classList.add("hide")
-    buttonSala2.classList.add("hide")
-    buttonSala4.classList.add("hide")
-    buttonSala3.textContent = "FECHAR SALA 3"
-    } else{
-    buttonSala1.classList.remove("hide")
-    buttonSala2.classList.remove("hide")
-    buttonSala4.classList.remove("hide")
-    buttonSala3.textContent = "ABRIR SALA 3"
-    }
-    sala3.classList.toggle("hide")
+    abrirSalas(sala3, sala2, sala1, sala4, buttonSala3, buttonSala1, buttonSala2, buttonSala4)
 })
 
 buttonSala4.addEventListener("click", () =>{
-    if(sala4.classList.contains("hide")){
-    buttonSala1.classList.add("hide")
-    buttonSala2.classList.add("hide")
-    buttonSala3.classList.add("hide")
-    buttonSala4.textContent = "FECHAR SALA 4"
-    } else{
-    buttonSala1.classList.remove("hide")
-    buttonSala2.classList.remove("hide")
-    buttonSala3.classList.remove("hide")
-    buttonSala4.textContent = "ABRIR SALA 4"
-    }
-    sala4.classList.toggle("hide")
+    abrirSalas(sala4, sala2, sala3, sala1, buttonSala4, buttonSala1, buttonSala2, buttonSala3)
 })
-}
 
-abrirSalas()
 
 function mediaAlunos(sala){
     const medias = []
