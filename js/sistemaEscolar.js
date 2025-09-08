@@ -1,4 +1,5 @@
 const buttons = document.querySelectorAll(".button")
+const alunos = document.querySelectorAll(".aluno")
 
 const buttonSala1 = document.querySelector("#abrir-sala1")
 const sala1 = document.querySelector("#sala1")
@@ -15,8 +16,13 @@ const sala4 = document.querySelector("#sala4")
 const calcularMediaBtn = document.querySelector("#calcular-media")
 const mediaText = document.querySelector("#media-text")
 
+const maiorNotaBtn = document.querySelector("#maior-nota-btn")
+const maiorMedia = document.querySelector("#mostrar-maior-media")
+maiorNotaBtn.classList.remove("hide")
+
 
 function abrirSalas(abrir, fechar1, fechar2, fechar3, btn, btn1, btn2, btn3){
+        maiorNotaBtn.classList.add("hide")
 
        const isHidden = abrir.classList.contains("hide");
 
@@ -61,6 +67,15 @@ buttonSala4.addEventListener("click", () =>{
     abrirSalas(sala4, sala2, sala3, sala1, buttonSala4, buttonSala1, buttonSala2, buttonSala3)
 })
 
+const buttonsSala = [buttonSala1, buttonSala2, buttonSala3, buttonSala4]
+
+buttonsSala.forEach((btnSala)=>{
+    btnSala.addEventListener("click", () =>{
+    calcularMediaBtn.classList.toggle("hide")
+    mediaText.classList.toggle("hide")
+    mediaText.textContent = ""
+    })
+})
 
 const medias = []
 
@@ -115,5 +130,35 @@ function calcularMediaGeral(){
 
 calcularMediaBtn.addEventListener("click", () =>{
     const media = calcularMediaGeral()
-    mediaText.textContent = `Média da escola 1: ${media}`
+    mediaText.textContent = `Média da escola 1: ${parseFloat(media).toFixed(1)}`
+})
+
+// FUNÇÃO QUE MOSTRA A MAIOR MÉDIA DA ESCOLA
+function mostrarMaiorMedia(){
+ let array = []
+
+alunos.forEach((aluno)=>{
+    
+    const nomeAluno = aluno.firstElementChild.textContent
+    const notaAluno = aluno.lastElementChild.textContent
+       
+    const notaAlunoNumber = parseFloat(notaAluno.replace("Média: ", ""));
+
+    const objAluno = {nome: nomeAluno, nota: notaAlunoNumber}
+
+    array.push(objAluno)
+
+    })
+
+    const maiorNota = array.reduce((max, atu) => {
+    return max.nota > atu.nota ? max : atu
+})
+
+    return [`${maiorNota.nome},  ${maiorNota.nota}`]
+}
+
+// EVENTO DO BOTÃO DE MOSTRAR MAIOR MÉDIA
+maiorNotaBtn.addEventListener("click", () => {
+    const maiorNota = mostrarMaiorMedia()
+    maiorMedia.textContent = `Maior média: ${maiorNota}`
 })
